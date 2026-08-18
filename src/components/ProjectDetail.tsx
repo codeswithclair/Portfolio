@@ -251,29 +251,32 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
           ))}
 
           {supportingScreenshots.length > 0 && (
-            <div style={{ display: 'grid', gap: 16, gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))' }}>
-              {supportingScreenshots.map((screenshot) => (
-                <figure key={screenshot.src} style={{ margin: 0 }}>
-                  <img
-                    src={screenshot.src}
-                    alt={screenshot.alt}
-                    style={{
-                      background: palette.soft,
-                      border: `3px solid ${palette.shadow}`,
-                      boxShadow: `4px 4px 0 ${palette.accent}`,
-                      display: 'block',
-                      height: 'auto',
-                      width: '100%',
-                    }}
-                  />
-                  {screenshot.caption && (
-                    <figcaption style={{ color: palette.muted, fontFamily: 'Nunito, sans-serif', fontSize: 13, lineHeight: 1.6, marginTop: 8 }}>
-                      {screenshot.caption}
-                    </figcaption>
-                  )}
-                </figure>
-              ))}
-            </div>
+            <section>
+              <h3 className="font-pixel" style={{ fontSize: 10, lineHeight: 1.8, margin: '0 0 14px' }}>main interface overview</h3>
+              <div style={{ display: 'grid', gap: 16, gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))' }}>
+                {supportingScreenshots.map((screenshot) => (
+                  <figure key={screenshot.src} style={{ margin: 0 }}>
+                    <img
+                      src={screenshot.src}
+                      alt={screenshot.alt}
+                      style={{
+                        background: palette.soft,
+                        border: `3px solid ${palette.shadow}`,
+                        boxShadow: `4px 4px 0 ${palette.accent}`,
+                        display: 'block',
+                        height: 'auto',
+                        width: '100%',
+                      }}
+                    />
+                    {screenshot.caption && (
+                      <figcaption style={{ color: palette.muted, fontFamily: 'Nunito, sans-serif', fontSize: 13, lineHeight: 1.6, marginTop: 8 }}>
+                        {screenshot.caption}
+                      </figcaption>
+                    )}
+                  </figure>
+                ))}
+              </div>
+            </section>
           )}
 
           {(project.githubUrl || project.liveUrl || project.videoUrl || project.link) && (

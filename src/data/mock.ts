@@ -140,29 +140,30 @@ export const projects: Project[] = [
     metadata: "Hackatec · Instituto Tecnológico de Saltillo",
     screenshots: [
       {
-        src: "/projects/chronocheck/chronocheck-dashboard.png",
-        alt: "ChronoCheck attendance dashboard showing employees in plant, delays, absences, and departmental attendance summary",
+        src: "/projects/chronocheck/chronocheck-login.png",
+        alt: "ChronoCheck admin login screen for ROCEEL access",
         isPrimary: true,
+        caption: "ROCEEL admin access and secure entry to the attendance system",
       },
       {
         src: "/projects/chronocheck/chronocheck-face-detection.png",
-        alt: "ChronoCheck kiosk detecting and labeling a face during employee registration",
-        caption: "Facial detection during employee check-in",
+        alt: "ChronoCheck kiosk detecting and labeling a face during employee check-in",
+        caption: "Kiosk face detection and live employee recognition",
+      },
+      {
+        src: "/projects/chronocheck/chronocheck-dashboard.png",
+        alt: "ChronoCheck attendance dashboard showing employees in plant, delays, absences, and departmental attendance summary",
+        caption: "Operational dashboard with present employees, tardiness, absences, and department totals",
       },
       {
         src: "/projects/chronocheck/chronocheck-attendance-management.png",
         alt: "ChronoCheck attendance management screen with department filters, employee search, and attendance records",
-        caption: "Administrative attendance history and reporting",
+        caption: "Attendance management and history review for departments and employees",
       },
       {
         src: "/projects/chronocheck/chronocheck-face-registration.png",
         alt: "ChronoCheck employee face registration interface with pending and registered statuses",
-        caption: "Face enrollment and descriptor registration",
-      },
-      {
-        src: "/projects/chronocheck/chronocheck-login.png",
-        alt: "ChronoCheck admin login screen for ROCEEL access",
-        caption: "ROCEEL admin access",
+        caption: "Biometric enrollment and employee facial descriptor registration",
       },
     ],
     longDescription:
