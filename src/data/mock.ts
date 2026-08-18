@@ -30,10 +30,44 @@ export const projects: Project[] = [
     event: "UNESCO Youth Hackathon 2026",
     eventColor: "#fce7f3",
     description:
-      "Traces how a news story develops across sources, mapping chronology, confirmations, contradictions, corrections, and reactions into a living timeline.",
-    tags: ["Python", "NLP", "React", "News Analysis"],
+      "A media-literacy tool that visually traces how a news story originates, spreads, changes, and is corrected across different sources.",
+    tags: ["Next.js", "TypeScript", "FastAPI", "PostgreSQL", "Cytoscape.js"],
     accent: "#f9a8d4",
-    link: null,
+    link: "https://github.com/Alejovar/Unravel",
+    subtitle: "News Traceability Graph",
+    metadata: "Team Project · UNESCO Youth Hackathon 2026 · Media & Information Literacy",
+    screenshots: [
+      {
+        src: "/projects/unravel/unravel-graph.png",
+        alt: "Unravel News Traceability Graph interface",
+        isPrimary: true,
+      },
+      {
+        src: "/projects/unravel/unravel-home.png",
+        alt: "Unravel story input homepage",
+      },
+    ],
+    githubUrl: "https://github.com/Alejovar/Unravel",
+    videoUrl: "https://www.youtube.com/watch?v=OydeJMlV9V0",
+    longDescription:
+      "Unravel helps users understand the story behind a headline. A user can enter a URL, headline, or short description, and the system finds related coverage and organizes it into a News Traceability Graph showing chronology and relationships between sources.",
+    principle: {
+      title: "Not a truth detector.",
+      text:
+        "Unravel does not automatically decide what users should believe. It exposes sources, chronology, changes, and relationships so users can investigate the story with more context.",
+    },
+    workflow: ["Paste a story", "Find sources", "Compare coverage", "Order by time", "Identify relationships", "Explore graph"],
+    relationships: ["confirmation", "update", "contradiction", "correction", "reaction", "republication"],
+    technologies: [
+      { label: "Frontend", value: "Next.js 14 · React · TypeScript · Tailwind CSS" },
+      { label: "Graph", value: "Cytoscape.js" },
+      { label: "Backend", value: "Python · FastAPI" },
+      { label: "Data / processing", value: "PostgreSQL · Redis · RQ" },
+      { label: "Source discovery / extraction", value: "GDELT · RSS · httpx · Trafilatura · BeautifulSoup" },
+      { label: "Analysis", value: "TF-IDF · BM25 · spaCy" },
+    ],
+    contribution:
+      "I contributed to the frontend development and interface design of Unravel, helping shape the user experience around story input and the News Traceability Graph. I also worked on the project documentation and presentation materials, and helped produce the final project video, including narrating the presentation.",
   },
   {
     id: "chronocheck",

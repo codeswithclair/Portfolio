@@ -8,6 +8,32 @@ export interface Project {
   tags: string[]
   accent: string
   link: string | null
+  subtitle?: string
+  metadata?: string
+  screenshots?: {
+    src: string
+    alt: string
+    isPrimary?: boolean
+  }[]
+  githubUrl?: string
+  liveUrl?: string
+  videoUrl?: string
+  longDescription?: string
+  principle?: {
+    title: string
+    text: string
+  }
+  workflow?: string[]
+  relationships?: string[]
+  technologies?: {
+    label: string
+    value: string
+  }[]
+  contribution?: string
+  sections?: {
+    title: string
+    body: string
+  }[]
 }
 
 export interface Experience {

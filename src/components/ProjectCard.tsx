@@ -4,26 +4,35 @@ import type { Project } from '@/types'
 
 interface ProjectCardProps {
   project: Project
+  onOpen: (project: Project) => void
 }
 
-export default function ProjectCard({ project }: ProjectCardProps) {
+export default function ProjectCard({ project, onOpen }: ProjectCardProps) {
   const [hovered, setHovered] = useState(false)
 
   return (
-    <div
+    <button
+      type="button"
+      onClick={() => onOpen(project)}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onFocus={() => setHovered(true)}
+      onBlur={() => setHovered(false)}
+      aria-label={`View project details for ${project.name}`}
       style={{
         background: '#fff',
         border: '3px solid #f9a8d4',
-        boxShadow: hovered ? '6px 6px 0 #ec4899' : '4px 4px 0 #f9a8d4',
-        transform: hovered ? 'translate(-2px,-2px)' : 'none',
-        transition: 'all 0.15s',
+        boxShadow: hovered ? '7px 7px 0 #ec4899' : '4px 4px 0 #f9a8d4',
+        transform: hovered ? 'translateY(-4px)' : 'none',
+        transition: 'transform 0.15s, box-shadow 0.15s',
         padding: '24px',
         display: 'flex',
         flexDirection: 'column',
         gap: 12,
-        cursor: project.link ? 'pointer' : 'default',
+        cursor: 'pointer',
+        font: 'inherit',
+        textAlign: 'left',
+        width: '100%',
       }}
     >
       <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
@@ -58,17 +67,17 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         ))}
       </div>
 
-      {project.link && (
-        <a
-          href={project.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="pixel-btn"
-          style={{ background: '#ec4899', color: '#fff', textDecoration: 'none', marginTop: 4, alignSelf: 'flex-start' }}
-        >
-          view ✦
-        </a>
-      )}
-    </div>
+      <span
+        className="font-pixel"
+        style={{
+          color: hovered ? '#ec4899' : '#be185d',
+          fontSize: hovered ? 8 : 7,
+          marginTop: 4,
+          transition: 'color 0.15s, font-size 0.15s',
+        }}
+      >
+        view project →
+      </span>
+    </button>
   )
 }
