@@ -14,6 +14,8 @@ const styles = {
     border: '2px solid #f9a8d4',
     boxShadow: '2px 2px 0 #f472b6',
     color: '#be185d',
+    fontSize: 8,
+    padding: '8px 12px',
   },
   vibe: {
     background: '#fff',

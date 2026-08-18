@@ -1,4 +1,4 @@
-import chibiMe from '@/imports/_______.jpg'
+import chibiMe from '@/imports/chibi-avatar.jpg'
 import CodeWindow from './ui/CodeWindow'
 import Sparkles from './ui/Sparkles'
 import type { Profile } from '@/types'

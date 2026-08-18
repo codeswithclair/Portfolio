@@ -140,10 +140,10 @@ export const aboutCards: AboutCard[] = [
 ]
 
 export const contactLinks: ContactLink[] = [
-  { label: "♡ email me", href: "mailto:hello@clair.dev", isPrimary: true },
-  { label: "github ✦", href: "https://github.com" },
-  { label: "linkedin", href: "https://linkedin.com" },
-  { label: "devpost", href: "https://devpost.com" },
+  { label: "♡ email me", href: "mailto:clarisseburciaga@gmail.com", isPrimary: true },
+  { label: "github ✦", href: "https://github.com/codeswithclair" },
+  { label: "linkedin", href: "www.linkedin.com/in/clarisseburciagaa" },
+  { label: "devpost", href: "https://devpost.com/codeswithclair" },
 ]
 
 export const navLinks: string[] = ["about", "projects", "experience", "cv", "contact"]

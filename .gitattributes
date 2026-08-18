@@ -99,6 +99,10 @@
 *.safetensors        filter=lfs diff=lfs merge=lfs -text
 *.gguf               filter=lfs diff=lfs merge=lfs -text
 
+# App images in src/imports must be available to deployment builds without Git LFS.
+src/imports/**       -filter -diff -merge -text
+public/**            -filter -diff -merge -text
+
 # ---------------------------------------------------------------------------
 # Databases
 # ---------------------------------------------------------------------------
