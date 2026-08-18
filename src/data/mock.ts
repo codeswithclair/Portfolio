@@ -1,12 +1,12 @@
 import type { Project, Experience, AboutCard, ContactLink, Profile } from '@/types'
 
 export const profile: Profile = {
-  name: "Persia Clarisse Burciaga Acevedo",
+  name: "Clarisse",
   title: "Systems Engineering Student",
   school: "Instituto Tecnológico de Saltillo",
   bio: "I'm a Systems Engineering student who loves turning ideas into real things — through hackathons, classes, international programs, and projects I build just because. I learn fast, collaborate well, and I genuinely enjoy the craft. ♡",
   cvPath: "/cv.pdf",
-  vibes: ["building", "learning", "shipping"],
+  vibes: ["building", "learning", "designing"],
   personalityTags: [
     "fast learner",
     "hackathon ready",
