@@ -127,14 +127,94 @@ export const projects: Project[] = [
   {
     id: "chronocheck",
     name: "ChronoCheck",
-    emoji: "📸",
-    event: "Hackathon · ITS Saltillo",
-    eventColor: "#fef9c3",
+    emoji: "🕒",
+    event: "Hackatec · ITS Saltillo",
+    eventColor: "#dfeee4",
     description:
-      "Facial-recognition kiosk for automatic attendance tracking with an admin dashboard monitoring work hours, tardiness, overtime, and absences.",
-    tags: ["Face Recognition", "Python", "Dashboard", "MySQL"],
-    accent: "#fde68a",
-    link: null,
+      "Facial-recognition attendance system built for ROCEEL Servicios Especializados, combining a kiosk workflow with an admin dashboard for check-ins, punctuality, overtime, and attendance reporting.",
+    tags: ["React", "face-api.js", "Node.js", "Express", "MySQL"],
+    accent: "#7aa68a",
+    link: "https://github.com/klesnuck/Hackatec",
+    githubUrl: "https://github.com/klesnuck/Hackatec",
+    subtitle: "Employee attendance and work-hour tracking",
+    metadata: "Hackatec · Instituto Tecnológico de Saltillo",
+    screenshots: [
+      {
+        src: "/projects/chronocheck/chronocheck-dashboard.png",
+        alt: "ChronoCheck attendance dashboard showing employees in plant, delays, absences, and departmental attendance summary",
+        isPrimary: true,
+      },
+      {
+        src: "/projects/chronocheck/chronocheck-face-detection.png",
+        alt: "ChronoCheck kiosk detecting and labeling a face during employee registration",
+        caption: "Facial detection during employee check-in",
+      },
+      {
+        src: "/projects/chronocheck/chronocheck-attendance-management.png",
+        alt: "ChronoCheck attendance management screen with department filters, employee search, and attendance records",
+        caption: "Administrative attendance history and reporting",
+      },
+      {
+        src: "/projects/chronocheck/chronocheck-face-registration.png",
+        alt: "ChronoCheck employee face registration interface with pending and registered statuses",
+        caption: "Face enrollment and descriptor registration",
+      },
+      {
+        src: "/projects/chronocheck/chronocheck-login.png",
+        alt: "ChronoCheck admin login screen for ROCEEL access",
+        caption: "ROCEEL admin access",
+      },
+    ],
+    longDescription:
+      "ChronoCheck was designed for ROCEEL Servicios Especializados to replace manual attendance tracking with a digital kiosk and dashboard. Employees check in through a fixed workstation, and the admin team reviews attendance data, punctuality, overtime, absences, and incomplete records from a dedicated dashboard. The implemented recognition flow uses face-api.js to detect faces, extract facial landmarks, build descriptor vectors, and compare them against registered employee descriptors stored in MySQL.",
+    principle: {
+      title: "Facial recognition using face descriptors",
+      text:
+        "The implemented system does not rely on 3D facial scanning or depth sensing. It uses face-api.js to detect the face, extract landmarks, generate a descriptor, and compare that descriptor against the employee descriptors saved in the database to match the correct employee.",
+    },
+    workflow: [
+      "Employee approaches kiosk",
+      "Face is detected",
+      "Descriptor is compared",
+      "Attendance event is logged",
+      "Admin reviews dashboard",
+    ],
+    technologies: [
+      { label: "Frontend", value: "React · Vite · CSS" },
+      { label: "Facial recognition", value: "face-api.js · facial landmarks · face descriptors" },
+      { label: "Backend", value: "Node.js · Express" },
+      { label: "Database", value: "MySQL · REST-style API" },
+      { label: "Operational flow", value: "Employee check-in · lunch exit/return · work exit · attendance reports" },
+    ],
+    contribution:
+      "My main contributions were in frontend development and UI/UX design, where I helped build and structure the kiosk and administrative interfaces that make up the core user experience of ChronoCheck. I worked on translating the project requirements into usable screens and workflows for attendance registration, administrative monitoring, and employee management. I also contributed to backend integration for parts of the application, helping connect the frontend with the system’s underlying data and functionality. In addition to the technical work, I participated in preparing the final presentation and pitching the project, communicating both the problem ChronoCheck addressed and the functionality of the proposed solution.",
+    sections: [
+      {
+        title: "The problem",
+        body:
+          "ROCEEL was tracking attendance with manual processes, which made it difficult to monitor punctuality, lunch transitions, overtime, absences, and incomplete records in real time.",
+      },
+      {
+        title: "What we built",
+        body:
+          "The project combines a self-service attendance kiosk with an administrative platform for attendance review, work-hour calculations, department summaries, and employee history.",
+      },
+      {
+        title: "Attendance dashboard",
+        body:
+          "The admin dashboard aggregates current employee presence, delays, absences, and department-level attendance totals, giving managers a quick operational overview for the selected day.",
+      },
+      {
+        title: "Face enrollment",
+        body:
+          "Administrators can load employee records and register a face descriptor for each employee so the kiosk can compare live detections against known stored vectors.",
+      },
+      {
+        title: "Technical architecture",
+        body:
+          "The frontend uses React for the kiosk and dashboard UI, while Node.js and Express expose REST-style endpoints for employee and attendance data. MySQL stores employee records, attendance logs, and the serialized facial descriptors used for recognition.",
+      },
+    ],
   },
   {
     id: "clea",

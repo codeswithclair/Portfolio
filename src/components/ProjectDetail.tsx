@@ -11,9 +11,11 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
   const closeButtonRef = useRef<HTMLButtonElement>(null)
   const primaryScreenshot = project.screenshots?.find((screenshot) => screenshot.isPrimary) ?? project.screenshots?.[0]
   const supportingScreenshots = project.screenshots?.filter((screenshot) => screenshot !== primaryScreenshot) ?? []
-  const palette = project.id === 'mesaos'
-    ? { backdrop: 'rgba(67, 48, 38, 0.52)', surface: '#fffaf0', border: '#5b4032', shadow: '#f59e0b', accent: '#b45309', soft: '#fef3c7', text: '#5b4032', muted: '#7c6658' }
-    : { backdrop: 'rgba(74, 44, 42, 0.45)', surface: '#fff5f8', border: '#4a2c2a', shadow: '#ec4899', accent: '#be185d', soft: '#fff', text: '#4a2c2a', muted: '#6b4c54' }
+  const palette = project.id === 'chronocheck'
+    ? { backdrop: 'rgba(34, 52, 46, 0.28)', surface: '#f5faf3', border: '#b6c9b5', shadow: '#a7c7b0', accent: '#335e4c', soft: '#edf5ee', text: '#2b312d', muted: '#4d5852' }
+    : project.id === 'mesaos'
+      ? { backdrop: 'rgba(67, 48, 38, 0.52)', surface: '#fffaf0', border: '#5b4032', shadow: '#f59e0b', accent: '#b45309', soft: '#fef3c7', text: '#5b4032', muted: '#7c6658' }
+      : { backdrop: 'rgba(74, 44, 42, 0.45)', surface: '#fff5f8', border: '#4a2c2a', shadow: '#ec4899', accent: '#be185d', soft: '#fff', text: '#4a2c2a', muted: '#6b4c54' }
 
   useEffect(() => {
     closeButtonRef.current?.focus()
