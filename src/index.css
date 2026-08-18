@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;500;600;700;800&display=swap');
+@import 'tailwindcss';
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 4px);
+}
+
+:root {
+  --background: #fff5f8;
+  --foreground: #4a2c2a;
+  --card: #ffffff;
+  --card-foreground: #4a2c2a;
+  --primary: #f472b6;
+  --primary-foreground: #ffffff;
+  --secondary: #fce7f3;
+  --secondary-foreground: #be185d;
+  --muted: #fdf2f8;
+  --muted-foreground: #9d6e7e;
+  --accent: #fb7185;
+  --accent-foreground: #ffffff;
+  --border: #fbb6ce;
+  --ring: #f9a8d4;
+  --radius: 0px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background-color: var(--background);
+  color: var(--foreground);
+  margin: 0;
+  padding: 0;
+}
+
+/* Pixel border utility */
+.pixel-border {
+  border: 3px solid #f9a8d4;
+  box-shadow: 3px 3px 0 #f472b6;
+}
+
+.pixel-border-dark {
+  border: 3px solid #4a2c2a;
+  box-shadow: 3px 3px 0 #4a2c2a;
+}
+
+.pixel-border-pink {
+  border: 3px solid #ec4899;
+  box-shadow: 4px 4px 0 #ec4899;
+}
+
+/* Pixel button */
+.pixel-btn {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  padding: 10px 18px;
+  border: 3px solid #4a2c2a;
+  box-shadow: 4px 4px 0 #4a2c2a;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.pixel-btn:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 #4a2c2a;
+}
+
+.pixel-btn:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 #4a2c2a;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #fce7f3; }
+::-webkit-scrollbar-thumb { background: #f9a8d4; }
+
+/* Pixel font class */
+.font-pixel {
+  font-family: 'Press Start 2P', monospace;
+}
+
+/* Subtle dot grid background */
+.dot-bg {
+  background-image: radial-gradient(circle, #f9a8d4 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Nav active */
+.nav-link {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  color: #9d6e7e;
+  text-decoration: none;
+  padding: 4px 8px;
+  transition: color 0.2s;
+  letter-spacing: 0.05em;
+}
+.nav-link:hover {
+  color: #ec4899;
+}
+
+/* Section titles */
+.section-title {
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(14px, 2vw, 20px);
+  color: #4a2c2a;
+  line-height: 1.6;
+}
+
+/* Tag chip */
+.tag {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 6px;
+  padding: 4px 8px;
+  background: #fce7f3;
+  border: 2px solid #f9a8d4;
+  color: #be185d;
+  display: inline-block;
+}
+
+/* Sparkle animation */
+@keyframes sparkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
+}
+.sparkle { animation: sparkle 2s ease-in-out infinite; }
+.sparkle-delay { animation: sparkle 2s ease-in-out infinite 0.7s; }
+.sparkle-delay2 { animation: sparkle 2s ease-in-out infinite 1.4s; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.float { animation: float 3s ease-in-out infinite; }
+
+/* Code window */
+.code-window {
+  background: #fff0f5;
+  border: 3px solid #f9a8d4;
+  box-shadow: 4px 4px 0 #f472b6;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  color: #be185d;
+  line-height: 2;
+  padding: 14px;
+}
+
+.code-window-bar {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.code-dot {
+  width: 10px;
+  height: 10px;
+  border: 2px solid currentColor;
+}

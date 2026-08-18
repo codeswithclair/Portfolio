@@ -1,0 +1,10 @@
+{
+  "description": "Showcase your engineering projects and achievements with a personalized website that highlights your skills, experiences, and innovative solutions.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
