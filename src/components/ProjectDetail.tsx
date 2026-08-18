@@ -11,6 +11,9 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
   const closeButtonRef = useRef<HTMLButtonElement>(null)
   const primaryScreenshot = project.screenshots?.find((screenshot) => screenshot.isPrimary) ?? project.screenshots?.[0]
   const supportingScreenshots = project.screenshots?.filter((screenshot) => screenshot !== primaryScreenshot) ?? []
+  const palette = project.id === 'mesaos'
+    ? { backdrop: 'rgba(67, 48, 38, 0.52)', surface: '#fffaf0', border: '#5b4032', shadow: '#f59e0b', accent: '#b45309', soft: '#fef3c7', text: '#5b4032', muted: '#7c6658' }
+    : { backdrop: 'rgba(74, 44, 42, 0.45)', surface: '#fff5f8', border: '#4a2c2a', shadow: '#ec4899', accent: '#be185d', soft: '#fff', text: '#4a2c2a', muted: '#6b4c54' }
 
   useEffect(() => {
     closeButtonRef.current?.focus()
@@ -39,7 +42,7 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
         position: 'fixed',
         inset: 0,
         zIndex: 50,
-        background: 'rgba(74, 44, 42, 0.45)',
+        background: palette.backdrop,
         padding: 'clamp(16px, 4vw, 36px)',
         overflowY: 'auto',
       }}
@@ -47,10 +50,12 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
       <div
         onMouseDown={(event) => event.stopPropagation()}
         style={{
-          background: '#fff5f8',
-          border: '3px solid #4a2c2a',
-          boxShadow: '8px 8px 0 #ec4899',
-          color: '#4a2c2a',
+          background: palette.surface,
+          border: `3px solid ${palette.border}`,
+          boxShadow: `8px 8px 0 ${palette.shadow}`,
+          color: palette.text,
+          minWidth: 0,
+          overflowX: 'hidden',
           margin: '0 auto',
           maxWidth: 980,
           width: '100%',
@@ -59,7 +64,7 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
         <div
           style={{
             alignItems: 'flex-start',
-            borderBottom: '3px solid #f9a8d4',
+            borderBottom: `3px solid ${palette.shadow}`,
             display: 'flex',
             gap: 16,
             justifyContent: 'space-between',
@@ -67,14 +72,14 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
           }}
         >
           <div style={{ minWidth: 0 }}>
-            <div className="font-pixel" style={{ color: '#be185d', fontSize: 7, lineHeight: 1.8 }}>
+            <div className="font-pixel" style={{ color: palette.accent, fontSize: 7, lineHeight: 1.8 }}>
               {project.metadata ?? project.event}
             </div>
             <h2 id="project-detail-title" className="font-pixel" style={{ fontSize: 'clamp(15px, 3vw, 24px)', lineHeight: 1.7, margin: '6px 0 0' }}>
               {project.name}
             </h2>
             {project.subtitle && (
-              <p className="font-pixel" style={{ color: '#9d6e7e', fontSize: 8, lineHeight: 1.8, margin: '4px 0 0' }}>
+              <p className="font-pixel" style={{ color: palette.muted, fontSize: 8, lineHeight: 1.8, margin: '4px 0 0' }}>
                 {project.subtitle}
               </p>
             )}
@@ -85,22 +90,22 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
             onClick={onClose}
             aria-label="Close project details"
             className="pixel-btn"
-            style={{ background: '#fff', color: '#4a2c2a', flex: '0 0 auto', padding: '8px 10px' }}
+            style={{ background: palette.soft, color: palette.text, flex: '0 0 auto', padding: '8px 10px' }}
           >
             x
           </button>
         </div>
 
-        <div style={{ display: 'grid', gap: 24, padding: 'clamp(16px, 4vw, 28px)' }}>
+        <div style={{ display: 'grid', gap: 28, minWidth: 0, padding: 'clamp(16px, 4vw, 28px)' }}>
           {primaryScreenshot && (
             <figure style={{ margin: 0 }}>
               <img
                 src={primaryScreenshot.src}
                 alt={primaryScreenshot.alt}
                 style={{
-                  background: '#fff',
-                  border: '3px solid #f9a8d4',
-                  boxShadow: '5px 5px 0 #f472b6',
+                  background: palette.soft,
+                  border: `3px solid ${palette.shadow}`,
+                  boxShadow: `5px 5px 0 ${palette.accent}`,
                   display: 'block',
                   height: 'auto',
                   maxHeight: 520,
@@ -109,23 +114,23 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
                 }}
               />
               {primaryScreenshot.caption && (
-                <figcaption style={{ color: '#9d6e7e', fontFamily: 'Nunito, sans-serif', fontSize: 13, lineHeight: 1.6, marginTop: 8 }}>
+                <figcaption style={{ color: palette.muted, fontFamily: 'Nunito, sans-serif', fontSize: 13, lineHeight: 1.6, marginTop: 8 }}>
                   {primaryScreenshot.caption}
                 </figcaption>
               )}
             </figure>
           )}
 
-          <p style={{ color: '#6b4c54', fontFamily: 'Nunito, sans-serif', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
+          <p style={{ color: palette.muted, fontFamily: 'Nunito, sans-serif', fontSize: 16, lineHeight: 1.8, margin: 0, overflowWrap: 'anywhere' }}>
             {project.longDescription ?? project.description}
           </p>
 
           {project.principle && (
-            <section style={{ background: '#fff', border: '3px solid #f9a8d4', boxShadow: '4px 4px 0 #f472b6', padding: 18 }}>
-              <h3 className="font-pixel" style={{ color: '#be185d', fontSize: 10, lineHeight: 1.8, margin: '0 0 8px' }}>
+            <section style={{ background: palette.soft, border: `3px solid ${palette.shadow}`, boxShadow: `4px 4px 0 ${palette.accent}`, padding: 18 }}>
+              <h3 className="font-pixel" style={{ color: palette.accent, fontSize: 10, lineHeight: 1.8, margin: '0 0 8px' }}>
                 {project.principle.title}
               </h3>
-              <p style={{ color: '#6b4c54', fontFamily: 'Nunito, sans-serif', fontSize: 15, lineHeight: 1.8, margin: 0 }}>
+              <p style={{ color: palette.muted, fontFamily: 'Nunito, sans-serif', fontSize: 15, lineHeight: 1.8, margin: 0, overflowWrap: 'anywhere' }}>
                 {project.principle.text}
               </p>
             </section>
@@ -136,7 +141,7 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
               <h3 className="font-pixel" style={{ fontSize: 10, lineHeight: 1.8, margin: '0 0 10px' }}>workflow</h3>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                 {project.workflow.map((step, index) => (
-                  <span key={step} className="font-pixel" style={{ background: '#fff', border: '2px solid #f9a8d4', color: '#be185d', fontSize: 7, lineHeight: 1.8, padding: '6px 8px' }}>
+                  <span key={step} className="font-pixel" style={{ background: palette.soft, border: `2px solid ${palette.shadow}`, color: palette.accent, fontSize: 7, lineHeight: 1.8, padding: '6px 8px' }}>
                     {index > 0 ? '→ ' : ''}{step}
                   </span>
                 ))}
@@ -160,8 +165,8 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
               <h3 className="font-pixel" style={{ fontSize: 10, lineHeight: 1.8, margin: '0 0 10px' }}>role-based system</h3>
               <div style={{ display: 'grid', gap: 12, gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))' }}>
                 {project.roles.map((role) => (
-                  <div key={role.name} style={{ background: '#fff', border: '2px solid #f9a8d4', padding: 14 }}>
-                    <div className="font-pixel" style={{ color: '#be185d', fontSize: 8, lineHeight: 1.8, marginBottom: 8 }}>{role.name}</div>
+                  <div key={role.name} style={{ background: palette.soft, border: `2px solid ${palette.shadow}`, padding: 14 }}>
+                    <div className="font-pixel" style={{ color: palette.accent, fontSize: 8, lineHeight: 1.8, marginBottom: 8 }}>{role.name}</div>
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
                       {role.capabilities.map((capability) => (
                         <PixelTag key={capability} label={capability} />
@@ -178,10 +183,34 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
               <h3 className="font-pixel" style={{ fontSize: 10, lineHeight: 1.8, margin: '0 0 10px' }}>core modules</h3>
               <div style={{ display: 'grid', gap: 12, gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))' }}>
                 {project.features.map((feature) => (
-                  <div key={feature.title} style={{ background: '#fff', border: '2px solid #f9a8d4', padding: 14 }}>
-                    <div className="font-pixel" style={{ color: '#be185d', fontSize: 8, lineHeight: 1.8, marginBottom: 6 }}>{feature.title}</div>
-                    <p style={{ color: '#6b4c54', fontFamily: 'Nunito, sans-serif', fontSize: 14, lineHeight: 1.6, margin: 0 }}>{feature.body}</p>
+                  <div key={feature.title} style={{ background: palette.soft, border: `2px solid ${palette.shadow}`, padding: 14 }}>
+                    <div className="font-pixel" style={{ color: palette.accent, fontSize: 8, lineHeight: 1.8, marginBottom: 6 }}>{feature.title}</div>
+                    <p style={{ color: palette.muted, fontFamily: 'Nunito, sans-serif', fontSize: 14, lineHeight: 1.6, margin: 0, overflowWrap: 'anywhere' }}>{feature.body}</p>
                   </div>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {project.moduleSections && (
+            <section style={{ display: 'grid', gap: 22 }}>
+              <div>
+                <h3 className="font-pixel" style={{ color: palette.accent, fontSize: 11, lineHeight: 1.8, margin: 0 }}>module walkthrough</h3>
+                <p style={{ color: palette.muted, fontFamily: 'Nunito, sans-serif', fontSize: 15, lineHeight: 1.7, margin: '8px 0 0' }}>
+                  Explore how each operational area works inside NG Manager.
+                </p>
+              </div>
+              <div style={{ display: 'grid', gap: 26 }}>
+                {project.moduleSections.map((module) => (
+                  <article key={module.title} style={{ background: palette.soft, border: `3px solid ${palette.shadow}`, boxShadow: `5px 5px 0 ${palette.accent}`, minWidth: 0, padding: 16 }}>
+                    <h4 className="font-pixel" style={{ color: palette.text, fontSize: 10, lineHeight: 1.8, margin: '0 0 8px' }}>{module.title}</h4>
+                    <p style={{ color: palette.muted, fontFamily: 'Nunito, sans-serif', fontSize: 15, lineHeight: 1.7, margin: '0 0 14px', overflowWrap: 'anywhere' }}>{module.body}</p>
+                    <img
+                      src={module.image.src}
+                      alt={module.image.alt}
+                      style={{ background: '#fff', border: `2px solid ${palette.border}`, display: 'block', height: 'auto', width: '100%' }}
+                    />
+                  </article>
                 ))}
               </div>
             </section>
@@ -192,9 +221,9 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
               <h3 className="font-pixel" style={{ fontSize: 10, lineHeight: 1.8, margin: '0 0 10px' }}>technology stack</h3>
               <div style={{ display: 'grid', gap: 10 }}>
                 {project.technologies.map((technology) => (
-                  <div key={technology.label} style={{ background: '#fff', border: '2px solid #f9a8d4', padding: 12 }}>
-                    <div className="font-pixel" style={{ color: '#be185d', fontSize: 7, lineHeight: 1.8 }}>{technology.label}</div>
-                    <div style={{ color: '#6b4c54', fontFamily: 'Nunito, sans-serif', fontSize: 14, lineHeight: 1.6 }}>{technology.value}</div>
+                  <div key={technology.label} style={{ background: palette.soft, border: `2px solid ${palette.shadow}`, padding: 12 }}>
+                    <div className="font-pixel" style={{ color: palette.accent, fontSize: 7, lineHeight: 1.8 }}>{technology.label}</div>
+                    <div style={{ color: palette.muted, fontFamily: 'Nunito, sans-serif', fontSize: 14, lineHeight: 1.6, overflowWrap: 'anywhere' }}>{technology.value}</div>
                   </div>
                 ))}
               </div>
@@ -204,7 +233,7 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
           {project.contribution && (
             <section>
               <h3 className="font-pixel" style={{ fontSize: 10, lineHeight: 1.8, margin: '0 0 10px' }}>My contribution</h3>
-              <p style={{ color: '#6b4c54', fontFamily: 'Nunito, sans-serif', fontSize: 15, lineHeight: 1.8, margin: 0 }}>
+              <p style={{ color: palette.muted, fontFamily: 'Nunito, sans-serif', fontSize: 15, lineHeight: 1.8, margin: 0, overflowWrap: 'anywhere' }}>
                 {project.contribution}
               </p>
             </section>
@@ -213,7 +242,7 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
           {project.sections?.map((section) => (
             <section key={section.title}>
               <h3 className="font-pixel" style={{ fontSize: 10, lineHeight: 1.8, margin: '0 0 10px' }}>{section.title}</h3>
-              <p style={{ color: '#6b4c54', fontFamily: 'Nunito, sans-serif', fontSize: 15, lineHeight: 1.8, margin: 0 }}>
+              <p style={{ color: palette.muted, fontFamily: 'Nunito, sans-serif', fontSize: 15, lineHeight: 1.8, margin: 0, overflowWrap: 'anywhere' }}>
                 {section.body}
               </p>
             </section>
@@ -227,16 +256,16 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
                     src={screenshot.src}
                     alt={screenshot.alt}
                     style={{
-                      background: '#fff',
-                      border: '3px solid #f9a8d4',
-                      boxShadow: '4px 4px 0 #f472b6',
+                      background: palette.soft,
+                      border: `3px solid ${palette.shadow}`,
+                      boxShadow: `4px 4px 0 ${palette.accent}`,
                       display: 'block',
                       height: 'auto',
                       width: '100%',
                     }}
                   />
                   {screenshot.caption && (
-                    <figcaption style={{ color: '#9d6e7e', fontFamily: 'Nunito, sans-serif', fontSize: 13, lineHeight: 1.6, marginTop: 8 }}>
+                    <figcaption style={{ color: palette.muted, fontFamily: 'Nunito, sans-serif', fontSize: 13, lineHeight: 1.6, marginTop: 8 }}>
                       {screenshot.caption}
                     </figcaption>
                   )}
@@ -248,17 +277,17 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
           {(project.githubUrl || project.liveUrl || project.videoUrl || project.link) && (
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
               {(project.githubUrl || project.link) && (
-                <a className="pixel-btn" href={project.githubUrl ?? project.link ?? '#'} target="_blank" rel="noopener noreferrer" style={{ background: '#ec4899', color: '#fff' }}>
+                <a className="pixel-btn" href={project.githubUrl ?? project.link ?? '#'} target="_blank" rel="noopener noreferrer" style={{ background: palette.shadow, color: palette.text }}>
                   GitHub ↗
                 </a>
               )}
               {project.videoUrl && (
-                <a className="pixel-btn" href={project.videoUrl} target="_blank" rel="noopener noreferrer" style={{ background: '#fff', color: '#4a2c2a' }}>
+                <a className="pixel-btn" href={project.videoUrl} target="_blank" rel="noopener noreferrer" style={{ background: palette.soft, color: palette.text }}>
                   Watch project video ↗
                 </a>
               )}
               {project.liveUrl && (
-                <a className="pixel-btn" href={project.liveUrl} target="_blank" rel="noopener noreferrer" style={{ background: '#fff0f5', color: '#4a2c2a' }}>
+                <a className="pixel-btn" href={project.liveUrl} target="_blank" rel="noopener noreferrer" style={{ background: palette.surface, color: palette.text }}>
                   Live demo ↗
                 </a>
               )}

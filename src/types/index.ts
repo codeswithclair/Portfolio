@@ -38,6 +38,14 @@ export interface Project {
     title: string
     body: string
   }[]
+  moduleSections?: {
+    title: string
+    body: string
+    image: {
+      src: string
+      alt: string
+    }
+  }[]
   contribution?: string
   sections?: {
     title: string
