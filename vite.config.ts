@@ -53,6 +53,19 @@ type FigmaSiteConfiguration = {
     icon?: string
   }
   openGraph?: {
+    title?: string
+    description?: string
+    type?: string
+    url?: string
+    image?: string
+    imageAlt?: string
+    imageWidth?: number
+    imageHeight?: number
+  }
+  twitter?: {
+    card?: string
+    title?: string
+    description?: string
     image?: string
   }
   analytics?: {
@@ -81,10 +94,21 @@ function figmaSiteConfiguration(config: FigmaSiteConfiguration): Plugin {
     return html.replace(`<!-- ${slotName} -->`, content)
   }
 
-  const title = config.title ?? "Figma Make App"
-  const description = config.description ?? ''
+  const title = config.title ?? 'Clarisse Burciaga | Software Developer'
+  const description = config.description ?? 'Portfolio of Clarisse Burciaga — Systems Engineering student building software, web applications, and engineering projects.'
   const favicon = config.icons?.icon ?? ''
-  const socialImage = config.openGraph?.image ?? ''
+  const socialImage = config.openGraph?.image ?? 'https://portfolio-six-opal-47.vercel.app/portfolio-preview.png'
+  const ogTitle = config.openGraph?.title ?? title
+  const ogDescription = config.openGraph?.description ?? 'Explore my software, hackathon, and engineering projects.'
+  const ogType = config.openGraph?.type ?? 'website'
+  const ogUrl = config.openGraph?.url ?? 'https://portfolio-six-opal-47.vercel.app/'
+  const ogImageAlt = config.openGraph?.imageAlt ?? 'Clarisse Burciaga developer portfolio'
+  const ogImageWidth = config.openGraph?.imageWidth ?? 1200
+  const ogImageHeight = config.openGraph?.imageHeight ?? 630
+  const twitterCard = config.twitter?.card ?? 'summary_large_image'
+  const twitterTitle = config.twitter?.title ?? title
+  const twitterDescription = config.twitter?.description ?? 'Explore my software, hackathon, and engineering projects.'
+  const twitterImage = config.twitter?.image ?? socialImage
   const language = sanitizeHtmlValue(config.language) || 'en'
   const googleAnalyticsId = sanitizeHtmlValue(config.analytics?.googleAnalyticsId)
   const headStart = config.customScripts?.headStart ?? ''
@@ -133,17 +157,28 @@ function figmaSiteConfiguration(config: FigmaSiteConfiguration): Plugin {
         if (favicon) {
           tags.push({ tag: 'link', attrs: { rel: 'icon', href: favicon }, injectTo: 'head' })
         }
-        if (title) {
-          tags.push({ tag: 'meta', attrs: { property: 'og:title', content: title }, injectTo: 'head' })
+        if (ogTitle) {
+          tags.push({ tag: 'meta', attrs: { property: 'og:title', content: ogTitle }, injectTo: 'head' })
         }
-        if (description) {
-          tags.push({ tag: 'meta', attrs: { property: 'og:description', content: description }, injectTo: 'head' })
+        if (ogDescription) {
+          tags.push({ tag: 'meta', attrs: { property: 'og:description', content: ogDescription }, injectTo: 'head' })
+        }
+        if (ogType) {
+          tags.push({ tag: 'meta', attrs: { property: 'og:type', content: ogType }, injectTo: 'head' })
+        }
+        if (ogUrl) {
+          tags.push({ tag: 'meta', attrs: { property: 'og:url', content: ogUrl }, injectTo: 'head' })
         }
         if (socialImage) {
           tags.push(
             { tag: 'meta', attrs: { property: 'og:image', content: socialImage }, injectTo: 'head' },
-            { tag: 'meta', attrs: { name: 'twitter:card', content: 'summary_large_image' }, injectTo: 'head' },
-            { tag: 'meta', attrs: { name: 'twitter:image', content: socialImage }, injectTo: 'head' },
+            { tag: 'meta', attrs: { property: 'og:image:alt', content: ogImageAlt }, injectTo: 'head' },
+            { tag: 'meta', attrs: { property: 'og:image:width', content: String(ogImageWidth) }, injectTo: 'head' },
+            { tag: 'meta', attrs: { property: 'og:image:height', content: String(ogImageHeight) }, injectTo: 'head' },
+            { tag: 'meta', attrs: { name: 'twitter:card', content: twitterCard }, injectTo: 'head' },
+            { tag: 'meta', attrs: { name: 'twitter:title', content: twitterTitle }, injectTo: 'head' },
+            { tag: 'meta', attrs: { name: 'twitter:description', content: twitterDescription }, injectTo: 'head' },
+            { tag: 'meta', attrs: { name: 'twitter:image', content: twitterImage }, injectTo: 'head' },
           )
         }
 

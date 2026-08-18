@@ -1,7 +1,21 @@
 {
-  "description": "Showcase your engineering projects and achievements with a personalized website that highlights your skills, experiences, and innovative solutions.",
-  "robots": {
-    "index": false
+  "title": "Clarisse Burciaga | Software Developer",
+  "description": "Portfolio of Clarisse Burciaga — Systems Engineering student building software, web applications, and engineering projects.",
+  "openGraph": {
+    "title": "Clarisse Burciaga | Software Developer",
+    "description": "Explore my software, hackathon, and engineering projects.",
+    "type": "website",
+    "url": "https://portfolio-six-opal-47.vercel.app/",
+    "image": "https://portfolio-six-opal-47.vercel.app/portfolio-preview.png",
+    "imageAlt": "Clarisse Burciaga developer portfolio",
+    "imageWidth": 1200,
+    "imageHeight": 630
+  },
+  "twitter": {
+    "card": "summary_large_image",
+    "title": "Clarisse Burciaga | Software Developer",
+    "description": "Explore my software, hackathon, and engineering projects.",
+    "image": "https://portfolio-six-opal-47.vercel.app/portfolio-preview.png"
   },
   "accessibility": {
     "addBypassLinks": false,
