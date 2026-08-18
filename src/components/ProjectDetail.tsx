@@ -11,6 +11,7 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
   const closeButtonRef = useRef<HTMLButtonElement>(null)
   const primaryScreenshot = project.screenshots?.find((screenshot) => screenshot.isPrimary) ?? project.screenshots?.[0]
   const supportingScreenshots = project.screenshots?.filter((screenshot) => screenshot !== primaryScreenshot) ?? []
+  const isCompactGallery = project.id === 'stepper-motor-scada'
   const palette = project.id === 'chronocheck'
     ? { backdrop: 'rgba(34, 52, 46, 0.28)', surface: '#f5faf3', border: '#b6c9b5', shadow: '#a7c7b0', accent: '#335e4c', soft: '#edf5ee', text: '#2b312d', muted: '#4d5852' }
     : project.id === 'mesaos'
@@ -252,13 +253,15 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
 
           {supportingScreenshots.length > 0 && (
             <section>
-              <h3 className="font-pixel" style={{ fontSize: 10, lineHeight: 1.8, margin: '0 0 14px' }}>main interface overview</h3>
-              <div style={{ display: 'grid', gap: 24 }}>
+              <h3 className="font-pixel" style={{ fontSize: 10, lineHeight: 1.8, margin: '0 0 14px' }}>{isCompactGallery ? 'physical setup' : 'main interface overview'}</h3>
+              <div style={{ display: 'grid', gap: isCompactGallery ? 16 : 24, gridTemplateColumns: isCompactGallery ? 'repeat(auto-fit, minmax(220px, 1fr))' : '1fr' }}>
                 {supportingScreenshots.map((screenshot) => (
                   <figure key={screenshot.src} style={{ margin: 0, width: '100%' }}>
-                    <div className="font-pixel" style={{ color: palette.accent, fontSize: 9, lineHeight: 1.8, marginBottom: 10 }}>
-                      {screenshot.title ?? screenshot.caption ?? 'Interface overview'}
-                    </div>
+                    {!isCompactGallery && (
+                      <div className="font-pixel" style={{ color: palette.accent, fontSize: 9, lineHeight: 1.8, marginBottom: 10 }}>
+                        {screenshot.title ?? screenshot.caption ?? 'Interface overview'}
+                      </div>
+                    )}
                     <img
                       src={screenshot.src}
                       alt={screenshot.alt}
@@ -271,9 +274,11 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
                         width: '100%',
                       }}
                     />
-                    <figcaption style={{ color: palette.muted, fontFamily: 'Nunito, sans-serif', fontSize: 14, lineHeight: 1.7, marginTop: 10 }}>
-                      {screenshot.description ?? screenshot.caption ?? screenshot.alt}
-                    </figcaption>
+                    {!isCompactGallery && (
+                      <figcaption style={{ color: palette.muted, fontFamily: 'Nunito, sans-serif', fontSize: 14, lineHeight: 1.7, marginTop: 10 }}>
+                        {screenshot.description ?? screenshot.caption ?? screenshot.alt}
+                      </figcaption>
+                    )}
                   </figure>
                 ))}
               </div>
