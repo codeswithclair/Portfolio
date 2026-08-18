@@ -93,20 +93,27 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
 
         <div style={{ display: 'grid', gap: 24, padding: 'clamp(16px, 4vw, 28px)' }}>
           {primaryScreenshot && (
-            <img
-              src={primaryScreenshot.src}
-              alt={primaryScreenshot.alt}
-              style={{
-                background: '#fff',
-                border: '3px solid #f9a8d4',
-                boxShadow: '5px 5px 0 #f472b6',
-                display: 'block',
-                height: 'auto',
-                maxHeight: 520,
-                objectFit: 'contain',
-                width: '100%',
-              }}
-            />
+            <figure style={{ margin: 0 }}>
+              <img
+                src={primaryScreenshot.src}
+                alt={primaryScreenshot.alt}
+                style={{
+                  background: '#fff',
+                  border: '3px solid #f9a8d4',
+                  boxShadow: '5px 5px 0 #f472b6',
+                  display: 'block',
+                  height: 'auto',
+                  maxHeight: 520,
+                  objectFit: 'contain',
+                  width: '100%',
+                }}
+              />
+              {primaryScreenshot.caption && (
+                <figcaption style={{ color: '#9d6e7e', fontFamily: 'Nunito, sans-serif', fontSize: 13, lineHeight: 1.6, marginTop: 8 }}>
+                  {primaryScreenshot.caption}
+                </figcaption>
+              )}
+            </figure>
           )}
 
           <p style={{ color: '#6b4c54', fontFamily: 'Nunito, sans-serif', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
@@ -148,6 +155,38 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
             </section>
           )}
 
+          {project.roles && (
+            <section>
+              <h3 className="font-pixel" style={{ fontSize: 10, lineHeight: 1.8, margin: '0 0 10px' }}>role-based system</h3>
+              <div style={{ display: 'grid', gap: 12, gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))' }}>
+                {project.roles.map((role) => (
+                  <div key={role.name} style={{ background: '#fff', border: '2px solid #f9a8d4', padding: 14 }}>
+                    <div className="font-pixel" style={{ color: '#be185d', fontSize: 8, lineHeight: 1.8, marginBottom: 8 }}>{role.name}</div>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                      {role.capabilities.map((capability) => (
+                        <PixelTag key={capability} label={capability} />
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {project.features && (
+            <section>
+              <h3 className="font-pixel" style={{ fontSize: 10, lineHeight: 1.8, margin: '0 0 10px' }}>core modules</h3>
+              <div style={{ display: 'grid', gap: 12, gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))' }}>
+                {project.features.map((feature) => (
+                  <div key={feature.title} style={{ background: '#fff', border: '2px solid #f9a8d4', padding: 14 }}>
+                    <div className="font-pixel" style={{ color: '#be185d', fontSize: 8, lineHeight: 1.8, marginBottom: 6 }}>{feature.title}</div>
+                    <p style={{ color: '#6b4c54', fontFamily: 'Nunito, sans-serif', fontSize: 14, lineHeight: 1.6, margin: 0 }}>{feature.body}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
           {project.technologies && (
             <section>
               <h3 className="font-pixel" style={{ fontSize: 10, lineHeight: 1.8, margin: '0 0 10px' }}>technology stack</h3>
@@ -183,19 +222,25 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
           {supportingScreenshots.length > 0 && (
             <div style={{ display: 'grid', gap: 16, gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))' }}>
               {supportingScreenshots.map((screenshot) => (
-                <img
-                  key={screenshot.src}
-                  src={screenshot.src}
-                  alt={screenshot.alt}
-                  style={{
-                    background: '#fff',
-                    border: '3px solid #f9a8d4',
-                    boxShadow: '4px 4px 0 #f472b6',
-                    display: 'block',
-                    height: 'auto',
-                    width: '100%',
-                  }}
-                />
+                <figure key={screenshot.src} style={{ margin: 0 }}>
+                  <img
+                    src={screenshot.src}
+                    alt={screenshot.alt}
+                    style={{
+                      background: '#fff',
+                      border: '3px solid #f9a8d4',
+                      boxShadow: '4px 4px 0 #f472b6',
+                      display: 'block',
+                      height: 'auto',
+                      width: '100%',
+                    }}
+                  />
+                  {screenshot.caption && (
+                    <figcaption style={{ color: '#9d6e7e', fontFamily: 'Nunito, sans-serif', fontSize: 13, lineHeight: 1.6, marginTop: 8 }}>
+                      {screenshot.caption}
+                    </figcaption>
+                  )}
+                </figure>
               ))}
             </div>
           )}

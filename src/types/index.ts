@@ -14,6 +14,7 @@ export interface Project {
     src: string
     alt: string
     isPrimary?: boolean
+    caption?: string
   }[]
   githubUrl?: string
   liveUrl?: string
@@ -28,6 +29,14 @@ export interface Project {
   technologies?: {
     label: string
     value: string
+  }[]
+  roles?: {
+    name: string
+    capabilities: string[]
+  }[]
+  features?: {
+    title: string
+    body: string
   }[]
   contribution?: string
   sections?: {
