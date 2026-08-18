@@ -9,10 +9,10 @@ export default function CV({ profile }: CVProps) {
   return (
     <section id="cv" style={{ padding: 'clamp(40px,6vw,80px) clamp(20px,6vw,80px)' }}>
       <div style={{ maxWidth: 700, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24, textAlign: 'center' }}>
-        <SectionHeader title="my cv" />
+        <SectionHeader title="my resume" />
 
         <p style={{ fontFamily: 'Nunito, sans-serif', fontSize: 15, color: '#6b4c54', lineHeight: 1.8, maxWidth: 460, margin: 0 }}>
-          Want the full picture? Download my CV to see everything in one place.
+          Want the full picture? Download my resume to see everything in one place.
         </p>
 
         <div
@@ -41,7 +41,7 @@ export default function CV({ profile }: CVProps) {
             className="pixel-btn"
             style={{ background: '#ec4899', color: '#fff', textDecoration: 'none' }}
           >
-            ♡ download cv
+            ♡ download resume
           </a>
           <span className="font-pixel" style={{ fontSize: 6, color: '#9d6e7e' }}>PDF format</span>
         </div>
