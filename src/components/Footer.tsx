@@ -17,7 +17,7 @@ export default function Footer({ school }: FooterProps) {
     >
       <span className="font-pixel" style={{ fontSize: 6, color: '#f9a8d4' }}>♡ {school}</span>
       <span className="font-pixel" style={{ fontSize: 6, color: '#9d6e7e' }}>
-        built with ✦ coffee ✦ code ✦ cute
+        built with ✦ coffee
       </span>
     </footer>
   )

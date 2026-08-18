@@ -411,7 +411,7 @@ export const aboutCards: AboutCard[] = [
   {
     emoji: "💻",
     label: "I Love Projects",
-    text: "Nothing beats turning an idea into something real. Hackathons, class projects, personal builds — I am always making something.",
+    text: "Nothing beats turning an idea into something real. Hackathons, class projects, personal builds, I am always making something.",
   },
 ]
 
