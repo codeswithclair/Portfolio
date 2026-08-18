@@ -15,6 +15,8 @@ export interface Project {
     alt: string
     isPrimary?: boolean
     caption?: string
+    title?: string
+    description?: string
   }[]
   githubUrl?: string
   liveUrl?: string

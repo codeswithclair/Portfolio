@@ -253,9 +253,12 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
           {supportingScreenshots.length > 0 && (
             <section>
               <h3 className="font-pixel" style={{ fontSize: 10, lineHeight: 1.8, margin: '0 0 14px' }}>main interface overview</h3>
-              <div style={{ display: 'grid', gap: 16, gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))' }}>
+              <div style={{ display: 'grid', gap: 24 }}>
                 {supportingScreenshots.map((screenshot) => (
-                  <figure key={screenshot.src} style={{ margin: 0 }}>
+                  <figure key={screenshot.src} style={{ margin: 0, width: '100%' }}>
+                    <div className="font-pixel" style={{ color: palette.accent, fontSize: 9, lineHeight: 1.8, marginBottom: 10 }}>
+                      {screenshot.title ?? screenshot.caption ?? 'Interface overview'}
+                    </div>
                     <img
                       src={screenshot.src}
                       alt={screenshot.alt}
@@ -268,11 +271,9 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
                         width: '100%',
                       }}
                     />
-                    {screenshot.caption && (
-                      <figcaption style={{ color: palette.muted, fontFamily: 'Nunito, sans-serif', fontSize: 13, lineHeight: 1.6, marginTop: 8 }}>
-                        {screenshot.caption}
-                      </figcaption>
-                    )}
+                    <figcaption style={{ color: palette.muted, fontFamily: 'Nunito, sans-serif', fontSize: 14, lineHeight: 1.7, marginTop: 10 }}>
+                      {screenshot.description ?? screenshot.caption ?? screenshot.alt}
+                    </figcaption>
                   </figure>
                 ))}
               </div>
