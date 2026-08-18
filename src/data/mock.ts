@@ -24,6 +24,61 @@ export const profile: Profile = {
 
 export const projects: Project[] = [
   {
+    id: "stepper-motor-scada",
+    name: "Stepper Motor SCADA",
+    emoji: "SC",
+    event: "Sistemas Programables",
+    eventColor: "#f3e8ff",
+    description:
+      "Real-time SCADA/HMI for monitoring and controlling a stepper motor through Arduino, with live telemetry, multiple drive modes, alarms, and persistent datalogging.",
+    tags: ["C#", "Arduino", "Serial", "MySQL", "SCADA"],
+    accent: "#d8b4fe",
+    link: null,
+    subtitle: "Real-Time HMI & Control System",
+    metadata: "Team Project · Sistemas Programables · Instituto Tecnologico de Saltillo",
+    screenshots: [
+      {
+        src: "/projects/SCADA/scada-main.png",
+        alt: "Stepper Motor SCADA HMI with telemetry gauges, controls, alarm, and datalogger",
+        isPrimary: true,
+      },
+      {
+        src: "/projects/SCADA/scada-hardware.png",
+        alt: "Arduino Uno and stepper motor connected on a breadboard",
+      },
+      {
+        src: "/projects/SCADA/scada-system.png",
+        alt: "Stepper motor SCADA hardware setup connected to the HMI computer",
+      },
+    ],
+    longDescription:
+      "This university team project implements a small SCADA system for supervising and controlling a stepper motor. A C# Windows Forms HMI communicates with an Arduino Uno over serial at 9600 baud, displays operating variables in real time, sends motor commands, and records the operating history in MySQL with a local CSV backup.",
+    workflow: ["Connect Arduino", "Send motor command", "Read serial telemetry", "Monitor alarms", "Persist datalogger history"],
+    technologies: [
+      { label: "HMI", value: "C# · Windows Forms · System.Drawing" },
+      { label: "Controller", value: "Arduino Uno · stepper motor" },
+      { label: "Communication", value: "SerialPort · USB serial · 9600 baud · CSV telemetry" },
+      { label: "Motor modes", value: "Single step · double torque · half step · direction toggle · STOP" },
+      { label: "Persistence", value: "MySQL datalogger · local CSV backup · DataGridView audit table" },
+    ],
+    contribution:
+      "I led the technical implementation of the project and developed the majority of the system, including the C# HMI, real-time telemetry visualization, serial communication with the Arduino, motor-control integration, and datalogging functionality.",
+    sections: [
+      {
+        title: "HMI and telemetry",
+        body: "The desktop HMI renders voltage, RPM, angular position, and alarm state through custom System.Drawing gauges and indicators. It also shows the current mode, direction, connection status, operating shift, and datalogger rows in a DataGridView.",
+      },
+      {
+        title: "Arduino firmware",
+        body: "I also worked on the Arduino firmware: command decoding, step sequences, simulated voltage sampling, position and RPM calculations, and CSV telemetry returned over Serial. The firmware supports single-step, double-torque, and half-step sequences, direction changes, and STOP.",
+      },
+      {
+        title: "Datalogging and resilience",
+        body: "Every ten seconds, the HMI records the operator, date, time, shift, mode, direction, alarm, position, speed, and voltage. The primary record is inserted into MySQL, with a local CSV file used as a backup when the local database is unavailable.",
+      },
+    ],
+  },
+  {
     id: "unravel",
     name: "Unravel",
     emoji: "🗞️",
